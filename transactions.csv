@@ -1,5 +1,4 @@
    Date    |   Time   |  Description   |     Vendor    | Amount
-
 2021-02-22 | 08:56:32 | Direct Deposit | Logitech      | 3435.34
 2021-03-08 | 14:32:18 | Playstation 5  | BestBuy       | -536.21
 2021-07-15 | 12:18:19 | Jordan 1       | Footlocker    | -202.45
@@ -16,10 +15,10 @@
 2023-05-04 | 19:08:12 | Down payment   | McLaren       | -25461.45
 2023-05-04 | 23:56:52 | Direct Deposit | Google        | 6532.78
 2023-05-05 | 12:42:48 | Banana         | Publix        | -453.23
-2023-05-05 | 12:43:36 | Apple          | Store         | 123.0
-2023-07-14 | 10:40:29 | Tv             | Bestbuy       | 1234.12
-2023-07-14 | 10:43:04 | Tv             | Sony          | 4321.12
-2023-07-14 | 10:46:45 | Tv             | Family dollar | 1.0
-2023-07-14 | 10:48:24 | Bread          | Publix        | 3.25
-2023-07-14 | 10:49:19 | Spoon          | Dollar tree   | 0.25
-2023-07-14 | 10:49:35 | Controller     | Sony          | 70.0
+2023-05-05 | 12:43:36 | Apple          | Store         | -123.0
+2023-07-14 | 10:40:29 | Tv             | Bestbuy       | -1234.12
+2023-07-14 | 10:43:04 | Tv             | Sony          | -4321.12
+2023-07-14 | 10:46:45 | Tv             | Family dollar | -1.0
+2023-07-14 | 10:48:24 | Bread          | Publix        | -3.25
+2023-07-14 | 10:49:19 | Spoon          | Dollar tree   | -0.25
+2023-07-14 | 10:49:35 | Controller     | Sony          | -70.0
