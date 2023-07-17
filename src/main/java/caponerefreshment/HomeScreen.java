@@ -229,10 +229,39 @@ public class HomeScreen {
         }
     }
 
+    public void viewByVendor(){
+        try {
+            FileReader fW = new FileReader("transactions.csv");
+            BufferedReader bW = new BufferedReader(fW);
+            System.out.print("\nEnter a vendor name: ");
+            String vendorName = scanner.next();
+            String line = null;
+            System.out.println("\nTransactions for " + vendorName + ":\n");
+            while ((line = bW.readLine()) != null) {
+                Pattern pattern = Pattern.compile("(\\d{4}-\\d{2}-\\d{2})\\s*\\|\\s*(\\d{2}:\\d{2}:\\d{2})\\s*\\|\\s*([^|]+)\\s*\\|\\s*" + vendorName + "\\s*\\|\\s*([-]?\\d+\\.?\\d*)");
+                Matcher matcher = pattern.matcher(line);
+                if (matcher.find()) {
+                    String date = matcher.group(1);
+                    String time = matcher.group(2);
+                    String description = matcher.group(3);
+                    String vendor = vendorName;
+                    String amount = matcher.group(4);
+                    System.out.println("Date: " + date + " | Time: " + time + " | Description: " + description + " | Vendor: " + vendor + " | Amount: " + amount);
+                }
+            }
+            bW.close();
+            fW.close();
+            welcomeMenu();
+        } catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+
     public void viewLedgerMenu() {
             System.out.println("\n1. View All Transactions");
             System.out.println("2. View By Month");
             System.out.println("3. View By Year");
+            System.out.println("4. View By Vendor");
             System.out.print("\nEnter your choice: ");
             String choice = scanner.next();
             switch(choice) {
@@ -244,6 +273,9 @@ public class HomeScreen {
                     break;
                 case "3":
                     viewByYear();
+                    break;
+                case "4":
+                    viewByVendor();
                     break;
             }
     }
