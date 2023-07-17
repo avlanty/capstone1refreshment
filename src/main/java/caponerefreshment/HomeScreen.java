@@ -160,7 +160,7 @@ public class HomeScreen {
                 case "Y":
                     welcomeMenu();
                 case "N":
-                    System.out.println("Too bad!");
+                    System.out.println("\nToo bad!");
                     welcomeMenu();
             }
             bW.close();
@@ -257,11 +257,83 @@ public class HomeScreen {
         }
     }
 
+    public void viewDeposits(){
+        try {
+            FileReader fW = new FileReader("transactions.csv");
+            BufferedReader bW = new BufferedReader(fW);
+            String line = bW.readLine();
+            System.out.println("\nDeposits:\n");
+            while ((line = bW.readLine()) != null) {
+                String[] columns = line.split("\\s*\\|\\s*");
+                String date = columns[0].trim();
+                String time = columns[1].trim();
+                String description = columns[2].trim();
+                String vendor = columns[3].trim();
+                double amount = Double.parseDouble(columns[4].trim());
+                if (amount > 0) {
+                    System.out.println("Date: " + date + " | Time: " + time + " | Description: " + description + " | Vendor: " + vendor + " | Amount: " + amount);
+                }
+            }
+            bW.close();
+            fW.close();
+            System.out.print("\nWould you like to return to the Main Menu? (Y/N): ");
+            String userAns = scanner.next();
+            switch (userAns.toUpperCase()) {
+                case "Y":
+                    welcomeMenu();
+                    break;
+                case "N":
+                    System.out.println("\nToo bad!");
+                    welcomeMenu();
+                    break;
+            }
+        } catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void viewWithdrawals(){
+        try {
+            FileReader fW = new FileReader("transactions.csv");
+            BufferedReader bW = new BufferedReader(fW);
+            String line = bW.readLine();
+            System.out.println("\nWithdrawals:\n");
+            while ((line = bW.readLine()) != null) {
+                String[] columns = line.split("\\s*\\|\\s*");
+                String date = columns[0].trim();
+                String time = columns[1].trim();
+                String description = columns[2].trim();
+                String vendor = columns[3].trim();
+                double amount = Double.parseDouble(columns[4].trim());
+                if (amount < 0) {
+                    System.out.println("Date: " + date + " | Time: " + time + " | Description: " + description + " | Vendor: " + vendor + " | Amount: " + amount);
+                }
+            }
+            bW.close();
+            fW.close();
+            System.out.print("\nWould you like to return to the Main Menu? (Y/N): ");
+            String userAns = scanner.next();
+            switch (userAns.toUpperCase()) {
+                case "Y":
+                    welcomeMenu();
+                    break;
+                case "N":
+                    System.out.println("\nToo bad!");
+                    welcomeMenu();
+                    break;
+            }
+        } catch (IOException e){
+            throw new RuntimeException(e);
+        }
+    }
+
     public void viewLedgerMenu() {
             System.out.println("\n1. View All Transactions");
             System.out.println("2. View By Month");
             System.out.println("3. View By Year");
             System.out.println("4. View By Vendor");
+            System.out.println("5. View Deposits");
+            System.out.println("6. View Withdrawals");
             System.out.print("\nEnter your choice: ");
             String choice = scanner.next();
             switch(choice) {
@@ -276,6 +348,12 @@ public class HomeScreen {
                     break;
                 case "4":
                     viewByVendor();
+                    break;
+                case "5":
+                    viewDeposits();
+                    break;
+                case "6":
+                    viewWithdrawals();
                     break;
             }
     }
